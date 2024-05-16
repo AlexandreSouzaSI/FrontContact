@@ -20,18 +20,10 @@ interface Contact {
     id: string;
     name: string;
     age: string;
-    phone1?: {
+    phone?:{
         id: string,
         number: string,
-    },
-    phone2?: {
-        id: string,
-        number: string,
-    },
-    phone3?: {
-        id: string,
-        number: string,
-    },
+    }[]
 }
 
 interface EditContactInput {
@@ -41,9 +33,8 @@ interface EditContactInput {
 type NewContactFormInputs = z.infer<typeof newContactFormSchema>
 
 export function EditContactModal({contactId}: EditContactInput) {
-    const {contact, loadContact, setContact } = useContext(ContactsContext)
+    const {contact, loadContact } = useContext(ContactsContext)
     const [contactSelected, setContactSelected] = useState<Contact | null>(null);
-    const [contactNow, setContactNow] = useState<Contact[]>([])
 
     useEffect(() => {
         const selectedContact = contact.find((item) => item.id === contactId);
@@ -64,9 +55,9 @@ export function EditContactModal({contactId}: EditContactInput) {
         if (contactSelected) {
             setValue('name', contactSelected.name);
             setValue('age', contactSelected.age);
-            if (contactSelected.phone && contactSelected.phone.length >= 1) setValue('phone1', contactSelected.phone[0].number);
-            if (contactSelected.phone && contactSelected.phone.length >= 2) setValue('phone2', contactSelected.phone[1].number);
-            if (contactSelected.phone && contactSelected.phone.length >= 3) setValue('phone3', contactSelected.phone[2].number);
+            setValue('phone1', contactSelected.phone?.[0].number);
+            setValue('phone2', contactSelected.phone?.[1].number);
+            setValue('phone3', contactSelected.phone?.[2].number);
         }
     }, [contactSelected, setValue]);
 
@@ -74,13 +65,10 @@ export function EditContactModal({contactId}: EditContactInput) {
         const { name, age, phone1, phone2, phone3 } = data;
       
         try {
-          // Buscar o contato atualizado da API
           const response = await api.get(`/contact/${contactSelected?.id}`);
       
-          // Clonar o objeto de contato para modificação
           const updatedContact = { ...response.data.contact };
       
-          // Atualizar os números de telefone clonados
           if (updatedContact.phone && updatedContact.phone.length >= 1) {
             updatedContact.phone[0].number = phone1;
           }
@@ -91,7 +79,6 @@ export function EditContactModal({contactId}: EditContactInput) {
             updatedContact.phone[2].number = phone3;
           }
       
-          // Enviar a requisição PUT com o contato atualizado
           await api.put(`/contact/update/${contactSelected!.id}`, {
             name,
             age,
@@ -100,14 +87,11 @@ export function EditContactModal({contactId}: EditContactInput) {
             phone3: updatedContact.phone[2],
           });
       
-          // Recarregar os contatos após a edição
-          setContactNow(state => [response.data.contact, ...state])
           loadContact();
           reset();
           window.location.reload()
         } catch (error) {
           console.error('Erro ao editar contato:', error);
-          // Tratar o erro conforme necessário
         }
       }
 

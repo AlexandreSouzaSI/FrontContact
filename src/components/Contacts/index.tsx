@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { NewContactModal } from "../NewContactModal";
 import { SearchForm } from "../SearchForm";
 import { ContactContainer, ContactTable, DivButton, DivButtonPagination, NewContactButton, PaginationButton } from "./styled";
