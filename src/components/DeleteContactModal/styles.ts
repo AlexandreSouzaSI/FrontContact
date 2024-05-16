@@ -26,7 +26,7 @@ export const Content = styled(Dialog.Content)`
         font-size: 20px;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         min-width: 22rem;
         border-radius: 6px;
         padding: 1rem 1rem;
@@ -53,7 +53,7 @@ export const ButtonRemove = styled.button`
     color: red;
     font-weight: 200;
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         width: 7rem;
         height: 3rem;
         margin-right: 2rem;
@@ -67,7 +67,7 @@ export const ButtonCancel = styled(Dialog.Close)`
     width: 10rem;
     height: 3rem;
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         width: 7rem;
         height: 3rem;
         margin-right: 1rem;
@@ -78,7 +78,7 @@ export const Title = styled(Dialog.Title)`
     margin-left: 8rem;
     margin-bottom: 1rem;
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         margin-left: 4rem;
         margin-bottom: 1rem;
     }

@@ -8,7 +8,7 @@ export const Overlay = styled(Dialog.Overlay)`
     inset: 0;
     background-color: rgba(0, 0, 0, 0.75);
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         position: fixed;
         width: 100vw;
         height: 100vh;
@@ -70,7 +70,7 @@ export const Content = styled(Dialog.Content)`
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         min-width: 22rem;
         font-size: 14px;
         border-radius: 6px;
@@ -135,7 +135,7 @@ export const CloseButton = styled(Dialog.Close)`
     cursor: pointer;
     color: ${props => props.theme["gray-100"]};
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         position: absolute;
     background: transparent;
     border: 0;

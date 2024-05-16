@@ -46,7 +46,7 @@ export const SearchFormContainer = styled.form`
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
         display: flex;
         gap: 1rem;
         width: 50%;

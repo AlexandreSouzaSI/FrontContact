@@ -7,7 +7,7 @@ export const ContactContainer = styled.div`
     margin: 4rem auto 0;
     padding: 0 1rem;
 
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
       width: 100%;
       width: 100%;
       max-width: 1280px;
@@ -22,7 +22,7 @@ export const DivButton = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     width: 100%;
     margin-left: 0rem;
     display: flex;
@@ -46,7 +46,7 @@ export const NewContactButton = styled.button`
     transition: background-color 0.2s;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     height: 50px;
     width: 80px;
     font-size: 10px;
@@ -71,7 +71,7 @@ export const DivButtonPagination = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -97,7 +97,7 @@ export const PaginationButton = styled.button`
     transition: background-color 0.2s;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     height: 50px;
     width: 170px;
     margin-top: 1rem;
@@ -129,7 +129,7 @@ export const SearchContactButton = styled.button`
     transition: background-color 0.2s;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     height: 45px;
     border: 0;
     background: ${props => props.theme["green-200"]};
@@ -182,7 +182,7 @@ export const ContactTable = styled.table`
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     width: 100%;
     min-width: 100px;
     border-collapse: separate;
