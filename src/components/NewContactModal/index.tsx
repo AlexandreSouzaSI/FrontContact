@@ -57,6 +57,7 @@ export function NewContactModal() {
                 <input 
                 type="text" 
                 placeholder="Nome Completo"
+                required
                 {...register('name')}
                 />
                 <input 

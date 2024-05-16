@@ -32,6 +32,30 @@ export const NewContactButton = styled.button`
   }
 `;
 
+export const DivButtonPagination = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  `
+
+export const PaginationButton = styled.button`
+  height: 50px;
+  width: 200px;
+  margin-top: 1rem;
+  border: 0;
+  background: ${props => props.theme["orange-300"]};
+  color: ${props => props.theme["white"]};
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  &:hover {
+    background: ${props => props.theme["orange-100"]};
+    transition: background-color 0.2s;
+  }
+`;
+
 export const SearchContactButton = styled.button`
   height: 50px;
   border: 0;
