@@ -1,38 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { NewContactModal } from "../NewContactModal";
 import { SearchForm } from "../SearchForm";
 import { ContactContainer, ContactTable, DivButton, NewContactButton } from "./styled";
 import * as Dialog from '@radix-ui/react-dialog'
+import { ContactsContext } from "../../contexts/ContactsContext";
+import { DeleteContactModal } from "../DeleteContactModal";
+import { EditContactModal } from "../EditContactModal";
+
 
 export function Contacts() {
-
-  interface Contact {
-    id: string,
-    age: string,
-    name: string,
-    created_at: string,
-    validated_at: string | null
-    phone: {
-      contact_id: string,
-      id: string,
-      number: string
-    }
-  }
-
-  const [contact, setContact] = useState<Contact[]>([])
+  const { contact } = useContext(ContactsContext)
+  const [ , setSelectedContactId] = useState<string | null>(null);
   
-  async function loadContact() {
-    const response = await fetch('http://localhost:3333/contact')
-    const data = await response.json();
 
-    console.log("data", data.contact)
-    setContact(data.contact)
-  }
 
-  useEffect(() => {
-    loadContact()
-  }, [])
-
+  const handleCloseModal = () => {
+    console.log("fechando o Modal")
+    setSelectedContactId(null)
+  };
 
   return (
     <>
@@ -50,27 +35,42 @@ export function Contacts() {
       <ContactContainer>
         <ContactTable>
           <tbody>
-            {contact.map(contact => {
+          {contact && contact.length > 0 && contact.map((contact) => {
               return (
                 <tr key={contact.id}>
-                  <td width="50%">Nome: {contact.name}</td>
-                  <td>Idade: {contact.age}</td>
+                  <td width="25%">{contact.name}</td>
+                  <td>{contact.age} Anos</td>
                   {contact.phone && contact.phone.length > 0 ? (
                     contact.phone.map((phone, index) => (
-                      <td key={index}>{phone.number}</td>
+                      <td key={index}>Telefone: ({phone.number})</td>
                     ))
                   ) : (
-                    <td>Sem Telefone</td>
+                    <td>Telefone</td>
                   )}
                   <td>
-                    <button>
-                      EDITAR
-                    </button>
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <button>
+                        EDITAR
+                      </button>
+                    </Dialog.Trigger>
+                      <EditContactModal 
+                        contactId={contact.id}
+                       />
+                  </Dialog.Root>
                   </td>
                   <td>
-                    <button>
-                      REMOVER
-                    </button>
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <button>
+                        REMOVER
+                      </button>
+                      </Dialog.Trigger>
+                      <DeleteContactModal
+                        contactId={contact.id}
+                        onClose={handleCloseModal}
+                        />
+                  </Dialog.Root>
                   </td>
                 </tr>
               )

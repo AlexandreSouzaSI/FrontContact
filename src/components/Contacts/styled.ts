@@ -50,12 +50,15 @@ export const SearchContactButton = styled.button`
 
 export const ContactTable = styled.table`
   width: 100%;
+  min-width: 1280px;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
   /* margin-top: 1.5rem; */
+
   td {
     padding: 1.25rem 1.5rem;
     background: ${props => props.theme["orange-100"]};
+    
     &:first-child {
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
@@ -72,6 +75,7 @@ export const ContactTable = styled.table`
       width: 6rem;
       height: 2rem;
       border-radius: 5px;
+      margin-top: -1.4rem;
       cursor: pointer;
 
       &:hover {
