@@ -40,6 +40,7 @@ export function NewContactModal() {
         })
 
         reset()
+        window.location.reload()
     }
 
     return (

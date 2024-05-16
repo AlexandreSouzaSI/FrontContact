@@ -18,13 +18,15 @@ export function SearchForm() {
     const {
         register,
         handleSubmit,
-        formState: { isSubmitting }
+        formState: { isSubmitting },
+        reset,
     } = useForm<SearchFormInputs>({
         resolver: zodResolver((searchFormSchema))
     })
 
     async function handleSearchContact(data: SearchFormInputs) {
         await fetchContact(data.query)
+        reset()
     }
     return (
         <SearchFormContainer onSubmit={handleSubmit(handleSearchContact)}>

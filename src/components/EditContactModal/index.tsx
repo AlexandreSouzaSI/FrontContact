@@ -41,8 +41,9 @@ interface EditContactInput {
 type NewContactFormInputs = z.infer<typeof newContactFormSchema>
 
 export function EditContactModal({contactId}: EditContactInput) {
-    const { contact, loadContact } = useContext(ContactsContext)
+    const {contact, loadContact, setContact } = useContext(ContactsContext)
     const [contactSelected, setContactSelected] = useState<Contact | null>(null);
+    const [contactNow, setContactNow] = useState<Contact[]>([])
 
     useEffect(() => {
         const selectedContact = contact.find((item) => item.id === contactId);
@@ -100,8 +101,10 @@ export function EditContactModal({contactId}: EditContactInput) {
           });
       
           // Recarregar os contatos após a edição
+          setContactNow(state => [response.data.contact, ...state])
           loadContact();
           reset();
+          window.location.reload()
         } catch (error) {
           console.error('Erro ao editar contato:', error);
           // Tratar o erro conforme necessário
