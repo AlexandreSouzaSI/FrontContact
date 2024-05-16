@@ -25,6 +25,25 @@ export const Content = styled(Dialog.Content)`
         margin-bottom: 1rem;
         font-size: 20px;
     }
+
+    @media (max-width: 400px) {
+        min-width: 22rem;
+        border-radius: 6px;
+        padding: 1rem 1rem;
+        background: ${props => props.theme["gray-500"]};
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        p {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: 18px;
+        }
+
+    }
 `
 
 export const ButtonRemove = styled.button`
@@ -33,16 +52,36 @@ export const ButtonRemove = styled.button`
     margin-right: 5rem;
     color: red;
     font-weight: 200;
+
+    @media (max-width: 400px) {
+        width: 7rem;
+        height: 3rem;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        color: red;
+        font-weight: 200;
+    }
 `
 
 export const ButtonCancel = styled(Dialog.Close)`
     width: 10rem;
     height: 3rem;
+
+    @media (max-width: 400px) {
+        width: 7rem;
+        height: 3rem;
+        margin-right: 1rem;
+    }
 `
 
 export const Title = styled(Dialog.Title)`
     margin-left: 8rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 400px) {
+        margin-left: 4rem;
+        margin-bottom: 1rem;
+    }
 `
 
 export const CloseButton = styled(Dialog.Close)`
